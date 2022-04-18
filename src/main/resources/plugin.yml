@@ -1,0 +1,48 @@
+name: SG121
+version: '${project.version}'
+main: com.xboxbedrock.sg121.SG121
+api-version: 1.18
+authors: [ XboxBedrock, SmylerMC ]
+description: Singapore 1:1 generator powered by Terra--
+load: STARTUP
+commands:
+  info:
+    description: "Plugin Info"
+    permission: SG121.info
+    usage: /tpll <lat> <lon>
+  tpll:
+    description: "Teleports player to latitude longitude coordinates."
+    permission: SG121.tpll
+    usage: /tpll <lat> <lon>
+  distortion:
+    description: "Returns amount of distortion due to the projection at the player's location."
+    permission: SG121.distortion
+    usage: /distortion
+  where:
+    aliases:
+      - ll
+      - whereami
+      - helpwhereamiihavenoideawhereiamwtf
+    description: "Returns your location in relation to the real world."
+    permission: SG121.where
+    usage: /where
+permissions:
+  SG121.*:
+    description: "Wild card"
+    children:
+      SG121.tpll: true
+      SG121.info: true
+      SG121.distortion: true
+      SG121.where: true
+  SG121.info:
+    description: "Allows usage of /info"
+  SG121.tpll:
+    description: "Allows usage of /tpll"
+  SG121.distortion:
+    description: "Allows usage of /distortion"
+  SG121.where:
+    description: "Allows usage of /where"
+libraries:
+  - com.google.guava:guava:31.0.1-jre
+  - net.kyori:adventure-api:4.9.3
+  - net.kyori:adventure-platform-bukkit:4.0.1
